@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import './App.css';
 import {CounterDisplay} from './CounterDisplay';
@@ -10,7 +10,7 @@ function App() {
     const [counter, setCounter] = useState<number>(0);
     const [maxValue, setMaxValue] = useState<number>(10);
 
-    const [isSetDisabled, setIsSetDisabled] = useState(false);
+    const [isSetDisabled, setIsSetDisabled] = useState(true);
 
     const increment = () => {
 
@@ -44,7 +44,48 @@ function App() {
         // SetMode(false);
     };
 
+    useEffect(()=>{
+        let valueAsStaring = localStorage.getItem('counterValue');
+        if (valueAsStaring) {
+            let newValue = JSON.parse(valueAsStaring);
+            setCounter(newValue);
+        }
 
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem('counterValue', JSON.stringify(counter));
+    }, [counter])
+
+
+
+    useEffect(() => {
+        let valueAsMax = localStorage.getItem('counterValueMax');
+        if (valueAsMax) {
+            let newValueAsMax = JSON.parse(valueAsMax);
+            setMaxValue(newValueAsMax);
+        }
+
+    }, []);
+
+
+    useEffect(() => {
+        localStorage.setItem('counterValueMax', JSON.stringify(maxValue));
+    }, [maxValue]);
+
+    useEffect(() => {
+        let valueAsStart = localStorage.getItem('counterValueStart');
+        if (valueAsStart) {
+            let newValueStart = JSON.parse(valueAsStart);
+            setStartValue(newValueStart);
+        }
+
+    }, []);
+
+
+    useEffect(() => {
+        localStorage.setItem('counterValueStart', JSON.stringify(startValue));
+    }, [startValue]);
 
 
     return (
