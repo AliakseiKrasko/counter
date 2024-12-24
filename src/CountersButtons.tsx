@@ -7,11 +7,11 @@ type CounterButtonsProps = {
     onReset: () => void;
     disableIncrement: boolean;
     disableReset: boolean;
-    onSet: () => void;
+
 };
 
 export const CounterButtons: React.FC<CounterButtonsProps> = ({
-                                                                  onIncrement, onReset, onSet,
+                                                                  onIncrement, onReset,
                                                                   disableIncrement, disableReset}) => {
     return (
         <div className="counter-buttons">
