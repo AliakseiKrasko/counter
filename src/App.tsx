@@ -10,19 +10,24 @@ function App() {
     const [counter, setCounter] = useState<number>(0);
     const [maxValue, setMaxValue] = useState<number>(10);
 
+    const [isSetDisabled, setIsSetDisabled] = useState(false);
+
     const increment = () => {
 
         setCounter(counter + 1);
     }
 
     const reset = () => {
-
+        setIsSetDisabled(false);
         setCounter(0);
         setMaxValue(maxValue);
     }
 
     const onSet = () => {
-        setCounter (counter + 1);
+        saveValues(maxValue, startValue)
+        setMaxError(false)
+        setStartError(false)
+        setIsSetDisabled(true);
     }
 
     const [maxError, setMaxError] = useState(false);
@@ -38,6 +43,7 @@ function App() {
         setCounter(startValue);
         // SetMode(false);
     };
+
 
 
 
@@ -66,10 +72,11 @@ function App() {
                                         setMaxError(true);
                                         setStartError(true);
                                     }
+                                    setIsSetDisabled(false);
                                 }}
                             />
                         </label>
-                        <label className={"label-start"}>
+                        <label className="label-start">
                             Start Value:
                             <input
                                 type="number"
@@ -79,30 +86,22 @@ function App() {
                                 onChange={(e) => {
                                     const value = Number(e.target.value);
                                     if (!isNaN(value) && value >= 0 && value < maxValue) {
-
-                                        setStartValue(value)
+                                        setStartValue(value);
                                         setStartError(false);
                                         setMaxError(false);
-
                                     } else {
                                         setStartError(true);
                                         setMaxError(true);
                                     }
+                                    // Включаем кнопку при любом новом вводе
+                                    setIsSetDisabled(false);
                                 }}
                             />
                         </label>
                     </div>
                     <div className={"button-set"}>
-                        <button
-                            onClick={() => {
-                                saveValues(maxValue, startValue);
-                                setMaxError(false);
-                                setStartError(false);
+                        <Button onClick={onSet} disabled={isSetDisabled} text="Set"/>
 
-                            }}
-                        >
-                            set
-                        </button>
                     </div>
                 </div>
             </div>
