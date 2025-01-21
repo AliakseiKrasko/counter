@@ -103,7 +103,7 @@ function App() {
                                 placeholder="Max value"
                                 onChange={(e) => {
                                     const value = Number(e.target.value);
-                                    if (!isNaN(value) && value > 0) { // Проверка: число и больше 0
+                                    if (!isNaN(value) && value > 0 && value > startValue) { // Проверка: число и больше 0
 
                                         setMaxValue(value);
                                         setMaxError(false);
