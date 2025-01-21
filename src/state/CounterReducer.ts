@@ -18,15 +18,16 @@ const initialState: StateType = {
 
 type ActionType = Increment | ResetCounter;
 
+export type Increment = {
+    type: 'INCREMENT';
+
+};
 export type ResetCounter = {
     type: 'RESET_COUNTER';
     counter: number;
 };
 
-export type Increment = {
-    type: 'INCREMENT';
-    counter: number;
-};
+
 
 export const counterReducer = (state: StateType = initialState, action: ActionType): StateType => {
     switch (action.type) {
@@ -41,12 +42,12 @@ export const counterReducer = (state: StateType = initialState, action: ActionTy
 
 
 
-
+export const incrementAC = (): Increment => {
+    return {type: 'INCREMENT'}
+}
 
 export const resetCounterAC = (counter: number): ResetCounter => {
     return {type: 'RESET_COUNTER', counter: counter}
 }
 
-export const incrementAC = (counter: number): ResetCounter => {
-    return {type: 'RESET_COUNTER', counter: counter}
-}
+
