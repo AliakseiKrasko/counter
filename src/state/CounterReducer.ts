@@ -24,7 +24,7 @@ export type Increment = {
 };
 export type ResetCounter = {
     type: 'RESET_COUNTER';
-    counter: number;
+
 };
 
 export type SetValues = {
@@ -85,8 +85,8 @@ export const counterReducer = (state: StateType = initialState, action: ActionTy
 export const incrementAC = (): Increment => {
     return {type: 'INCREMENT'}
 }
-export const resetCounterAC = (counter: number): ResetCounter => {
-    return {type: 'RESET_COUNTER', counter: counter}
+export const resetCounterAC = (): ResetCounter => {
+    return {type: 'RESET_COUNTER'}
 }
 export const setValuesAC = (maxValue: number, startValue: number): SetValues => {
     return {type: 'SET_VALUES', maxValue: maxValue, startValue: startValue}

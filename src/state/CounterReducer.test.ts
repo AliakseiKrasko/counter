@@ -13,7 +13,7 @@ test('reset counter ', () => {
         isSetDisabled: false,
         maxError: false,
         startError: false};
-    const endState = counterReducer(startState, resetCounterAC(0))
+    const endState = counterReducer(startState, resetCounterAC())
     expect(endState.counter).toBe(0)
     expect(endState.isSetDisabled).toBe(false)
     expect(endState.startError).toBe(false)
