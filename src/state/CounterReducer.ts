@@ -7,7 +7,7 @@ export type StateType = {
     startError: boolean;
 };
 
-const initialState: StateType = {
+export const initialState: StateType = {
     counter: 0,
     maxValue: 10,
     startValue: 0,
