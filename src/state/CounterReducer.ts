@@ -53,7 +53,9 @@ export type EnableSetButton = {
 type ActionType = Increment | ResetCounter | SetValues | SetCounter | SetMaxErrorCounter | SetStartErrorCounter | EnableSetButton;
 
 
-export const counterReducer = (state: StateType = initialState, action: ActionType): StateType => {
+export const counterReducer = (
+    state: StateType = initialState,
+    action: any) => {
     switch (action.type) {
         case 'INCREMENT':
             return { ...state, counter: state.counter + 1 };

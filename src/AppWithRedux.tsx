@@ -1,23 +1,25 @@
-import React, { useEffect, useReducer } from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
-import { CounterDisplay } from './CounterDisplay';
-import { CounterButtons } from './CountersButtons';
-import { Button } from './Button';
+import {CounterDisplay} from './CounterDisplay';
+import {CounterButtons} from './CountersButtons';
+import {Button} from './Button';
 import {
-    counterReducer,
-    incrementAC,
-    initialState,
-    resetCounterAC,
-    setValuesAC,
     EnableSetButtonAC,
+    incrementAC,
+    resetCounterAC,
     SetMaxErrorCounterAC,
     SetStartErrorCounterAC,
+    setValuesAC,
 } from './state/CounterReducer';
 import {useDispatch} from 'react-redux';
+import {useAppSelector} from './state/store';
+
 
 function AppWithRedux() {
-    const dispatch = useDispatch()
-    const [state] = useReducer(counterReducer, initialState);
+
+    const state = useAppSelector(state => state.counter);
+    const dispatch = useDispatch();
+    // const [state, dispatch] = useReducer(counterReducer, initialState);
 
     const increment = () => {
         dispatch(incrementAC());
